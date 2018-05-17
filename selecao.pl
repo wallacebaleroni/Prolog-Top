@@ -1,3 +1,7 @@
+nome(selecao, "Seleção Brasileira de Futebol").
+associacao(selecao, cbf).
+confederacao(selecao, conmebol).
+
 apelido(selecao, "seleção verde-amarela").
 apelido(selecao, "seleção canarinho").
 apelido(selecao, "seleção amarelinha").
@@ -48,6 +52,13 @@ ganhou(selecao, copadasconfederacoes, 2013).
 
 ganhou(selecao, olimpiadas, 2016).
 
+ganhou(selecao, campeonatopanamericano, 1952).
+ganhou(selecao, campeonatopanamericano, 1956).
+
+ganhou(selecao, jogospanamericanos, 1963).
+ganhou(selecao, jogospanamericanos, 1979).
+ganhou(selecao, jogospanamericanos, 1987).
+
 sede(olimpiadas, 2016, riodejaneiro).
 sede(copadomundo, 1958, suecia).
 sede(copadomundo, 1962, chile).
@@ -82,7 +93,7 @@ fornecedor(umbro, 1996).
 fornecedor(nike, 1997).
 fornecedor(nike, 2018).
 
-fornecedor(MARCA, ANO) :- fornecedor(MARCA, X), fornecedor(MARCA, Y), X > ANO, Y < ANO). /* ? */
+fornecedor(MARCA, ANO) :- fornecedor(MARCA, X), fornecedor(MARCA, Y), X > ANO, Y < ANO. /* ? */
 
 rival(selecao, argentina).
 rival(selecao, uruguai).
