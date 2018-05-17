@@ -83,3 +83,4 @@ fornecedor(umbro, 1996).
 fornecedor(nike, 1997).
 fornecedor(nike, 2018).
 
+
