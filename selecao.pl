@@ -71,5 +71,15 @@ fezparte(bellini, selecao).
 fezparte(bebeto, selecao).
 fezparte(rivaldo, selecao).
 
-
+# fazer regra pra ver se ta entre um e outro
+fornecedor(athleta, 1954).
+fornecedor(athleta, 1977).
+fornecedor(adidas, 1977).
+fornecedor(adidas, 1981).
+fornecedor(topper, 1981).
+fornecedor(topper, 1990).
+fornecedor(umbro, 1991).
+fornecedor(umbro, 1996).
+fornecedor(nike, 1997).
+fornecedor(nike, 2018).
 
