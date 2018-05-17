@@ -55,3 +55,21 @@ sede(copadomundo, 1970, mexico).
 sede(copadomundo, 1994, eua).
 sede(copadomundo, 2002, coreiadosul).
 sede(copadomundo, 2002, japao).
+
+fezparte(rivellino, selecao).
+fezparte(zico, selecao).
+fezparte(ronaldo, selecao).
+fezparte(romario, selecao).
+fezparte(ronaldinhogaucho, selecao).
+fezparte(zagallo, selecao).
+fezparte(carlosalberto, selecao).
+fezparte(robertocarlos, selecao).
+fezparte(tostao, selecao).
+fezparte(didi, selecao).
+fezparte(vava, selecao).
+fezparte(bellini, selecao).
+fezparte(bebeto, selecao).
+fezparte(rivaldo, selecao).
+
+
+
