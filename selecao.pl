@@ -6,6 +6,8 @@ apelido(selecao, "seleção verde-amarela").
 apelido(selecao, "seleção canarinho").
 apelido(selecao, "seleção amarelinha").
 
+participou(p) :- ganhou(p).
+
 participou(selecao, copadomundo, 1930).
 participou(selecao, copadomundo, 1934).
 participou(selecao, copadomundo, 1938).
@@ -32,8 +34,6 @@ ganhou(selecao, copadomundo, 1962).
 ganhou(selecao, copadomundo, 1970).
 ganhou(selecao, copadomundo, 1994).
 ganhou(selecao, copadomundo, 2002).
-
-participou(p) :- ganhou(p).
 
 ganhou(selecao, copadasamericas, 1919).
 ganhou(selecao, copadasamericas, 1922).
@@ -81,6 +81,7 @@ fezparte(vava, selecao).
 fezparte(bellini, selecao).
 fezparte(bebeto, selecao).
 fezparte(rivaldo, selecao).
+fezparte(neymar, selecao).
 
 fornecedor(athleta, 1954).
 fornecedor(athleta, 1977).
