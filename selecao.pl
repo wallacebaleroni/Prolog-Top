@@ -83,4 +83,34 @@ fornecedor(umbro, 1996).
 fornecedor(nike, 1997).
 fornecedor(nike, 2018).
 
+rival(selecao, argentina).
+rival(selecao, uruguai).
 
+titulo(melhordomundo, romario, 1994).
+titulo(melhordomundo, ronaldo, 1996).
+titulo(melhordomundo, ronaldo, 1997).
+titulo(melhordomundo, ronaldo, 2002).
+titulo(melhordomundo, ronaldinhogaucho, 2004).
+titulo(melhordomundo, ronaldinhogaucho, 2005).
+titulo(melhordomundo, kaka, 2007).
+
+uniforme(jogador, principal, amarelo, azul).
+uniforme(jogador, alternativo, azul, branco).
+uniforme(goleiro, principal, verde, verde).
+uniforme(goleiro, principal, cinza, cinza).
+uniforme(goleiro, principal, preto, roxo).
+uniforme(jogador, treino, azul).
+uniforme(goleiro, treino, preto).
+uniforme(comissaotecnica, treino, preto).
+
+patrocina(guaranaantarctica, 2001, 2019).
+patrocina(guaranaantarctica, 2005, 2014).
+patrocina(guaranaantarctica, 2008, 2022).
+patrocina(extra, 2009, 2018).
+patrocina(nestle, 2010, 2018).
+patrocina(mastercard, 2012, 2020).
+patrocina(samsung, 2013, 2016).
+patrocina(gillette, 2016, 2018).
+patrocina(gol, 2013, 2017).
+patrocina(unimed, 2013, 2019).
+patrocina(chevrolet, 2014, 2018).
