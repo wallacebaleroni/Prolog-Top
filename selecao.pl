@@ -83,18 +83,13 @@ fezparte(bebeto, selecao).
 fezparte(rivaldo, selecao).
 fezparte(neymar, selecao).
 
-fornecedor(athleta, 1954).
-fornecedor(athleta, 1977).
-fornecedor(adidas, 1977).
-fornecedor(adidas, 1981).
-fornecedor(topper, 1981).
-fornecedor(topper, 1990).
-fornecedor(umbro, 1991).
-fornecedor(umbro, 1996).
-fornecedor(nike, 1997).
-fornecedor(nike, 2018).
+fornecedor(athleta, 1954, 1977).
+fornecedor(adidas, 1977, 1981).
+fornecedor(topper, 1981, 1990).
+fornecedor(umbro, 1991, 1996).
+fornecedor(nike, 1997, 2018).
 
-fornecedor(MARCA, ANO) :- fornecedor(MARCA, X), fornecedor(MARCA, Y), X > ANO, Y < ANO. /* ? */
+fornecedor(MARCA, ANO) :- fornecedor(MARCA, INI, FIM), ANO >= INI, ANO =< FIM.
 
 rival(selecao, argentina).
 rival(selecao, uruguai).
@@ -127,3 +122,5 @@ patrocina(gillette, 2016, 2018).
 patrocina(gol, 2013, 2017).
 patrocina(unimed, 2013, 2019).
 patrocina(chevrolet, 2014, 2018).
+
+patrocina(MARCA, ANO) :- patrocina(MARCA, INI, FIM), ANO >= INI, ANO =< FIM.
