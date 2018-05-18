@@ -1,63 +1,63 @@
-nome(selecao, "Seleção Brasileira de Futebol").
-associacao(selecao, cbf).
-confederacao(selecao, conmebol).
+nome(brasil, "Seleção Brasileira de Futebol").
+associacao(brasil, cbf).
+confederacao(brasil, conmebol).
 
-apelido(selecao, "seleção verde-amarela").
-apelido(selecao, "seleção canarinho").
-apelido(selecao, "seleção amarelinha").
+apelido(brasil, "seleção verde-amarela").
+apelido(brasil, "seleção canarinho").
+apelido(brasil, "seleção amarelinha").
 
 participou(p) :- ganhou(p).
 
-participou(selecao, copadomundo, 1930).
-participou(selecao, copadomundo, 1934).
-participou(selecao, copadomundo, 1938).
-participou(selecao, copadomundo, 1950).
-participou(selecao, copadomundo, 1954).
-participou(selecao, copadomundo, 1958).
-participou(selecao, copadomundo, 1962).
-participou(selecao, copadomundo, 1966).
-participou(selecao, copadomundo, 1970).
-participou(selecao, copadomundo, 1974).
-participou(selecao, copadomundo, 1978).
-participou(selecao, copadomundo, 1982).
-participou(selecao, copadomundo, 1986).
-participou(selecao, copadomundo, 1990).
-participou(selecao, copadomundo, 1994).
-participou(selecao, copadomundo, 1998).
-participou(selecao, copadomundo, 2002).
-participou(selecao, copadomundo, 2006).
-participou(selecao, copadomundo, 2010).
-participou(selecao, copadomundo, 2014).
+participou(brasil, copadomundo, 1930).
+participou(brasil, copadomundo, 1934).
+participou(brasil, copadomundo, 1938).
+participou(brasil, copadomundo, 1950).
+participou(brasil, copadomundo, 1954).
+participou(brasil, copadomundo, 1958).
+participou(brasil, copadomundo, 1962).
+participou(brasil, copadomundo, 1966).
+participou(brasil, copadomundo, 1970).
+participou(brasil, copadomundo, 1974).
+participou(brasil, copadomundo, 1978).
+participou(brasil, copadomundo, 1982).
+participou(brasil, copadomundo, 1986).
+participou(brasil, copadomundo, 1990).
+participou(brasil, copadomundo, 1994).
+participou(brasil, copadomundo, 1998).
+participou(brasil, copadomundo, 2002).
+participou(brasil, copadomundo, 2006).
+participou(brasil, copadomundo, 2010).
+participou(brasil, copadomundo, 2014).
 
-ganhou(selecao, copadomundo, 1958).
-ganhou(selecao, copadomundo, 1962).
-ganhou(selecao, copadomundo, 1970).
-ganhou(selecao, copadomundo, 1994).
-ganhou(selecao, copadomundo, 2002).
+ganhou(brasil, copadomundo, 1958).
+ganhou(brasil, copadomundo, 1962).
+ganhou(brasil, copadomundo, 1970).
+ganhou(brasil, copadomundo, 1994).
+ganhou(brasil, copadomundo, 2002).
 
-ganhou(selecao, copadasamericas, 1919).
-ganhou(selecao, copadasamericas, 1922).
-ganhou(selecao, copadasamericas, 1949).
-ganhou(selecao, copadasamericas, 1989).
-ganhou(selecao, copadasamericas, 1997).
-ganhou(selecao, copadasamericas, 1999).
-ganhou(selecao, copadasamericas, 2004).
-ganhou(selecao, copadasamericas, 2007).
+ganhou(brasil, copadasamericas, 1919).
+ganhou(brasil, copadasamericas, 1922).
+ganhou(brasil, copadasamericas, 1949).
+ganhou(brasil, copadasamericas, 1989).
+ganhou(brasil, copadasamericas, 1997).
+ganhou(brasil, copadasamericas, 1999).
+ganhou(brasil, copadasamericas, 2004).
+ganhou(brasil, copadasamericas, 2007).
 
 
-ganhou(selecao, copadasconfederacoes, 1997).
-ganhou(selecao, copadasconfederacoes, 2005).
-ganhou(selecao, copadasconfederacoes, 2009).
-ganhou(selecao, copadasconfederacoes, 2013).
+ganhou(brasil, copadasconfederacoes, 1997).
+ganhou(brasil, copadasconfederacoes, 2005).
+ganhou(brasil, copadasconfederacoes, 2009).
+ganhou(brasil, copadasconfederacoes, 2013).
 
-ganhou(selecao, olimpiadas, 2016).
+ganhou(brasil, olimpiadas, 2016).
 
-ganhou(selecao, campeonatopanamericano, 1952).
-ganhou(selecao, campeonatopanamericano, 1956).
+ganhou(brasil, campeonatopanamericano, 1952).
+ganhou(brasil, campeonatopanamericano, 1956).
 
-ganhou(selecao, jogospanamericanos, 1963).
-ganhou(selecao, jogospanamericanos, 1979).
-ganhou(selecao, jogospanamericanos, 1987).
+ganhou(brasil, jogospanamericanos, 1963).
+ganhou(brasil, jogospanamericanos, 1979).
+ganhou(brasil, jogospanamericanos, 1987).
 
 sede(olimpiadas, 2016, riodejaneiro).
 sede(copadomundo, 1958, suecia).
@@ -67,21 +67,21 @@ sede(copadomundo, 1994, eua).
 sede(copadomundo, 2002, coreiadosul).
 sede(copadomundo, 2002, japao).
 
-fezparte(rivellino, selecao).
-fezparte(zico, selecao).
-fezparte(ronaldo, selecao).
-fezparte(romario, selecao).
-fezparte(ronaldinhogaucho, selecao).
-fezparte(zagallo, selecao).
-fezparte(carlosalberto, selecao).
-fezparte(robertocarlos, selecao).
-fezparte(tostao, selecao).
-fezparte(didi, selecao).
-fezparte(vava, selecao).
-fezparte(bellini, selecao).
-fezparte(bebeto, selecao).
-fezparte(rivaldo, selecao).
-fezparte(neymar, selecao).
+fezparte(rivellino, brasil).
+fezparte(zico, brasil).
+fezparte(ronaldo, brasil).
+fezparte(romario, brasil).
+fezparte(ronaldinhogaucho, brasil).
+fezparte(zagallo, brasil).
+fezparte(carlosalberto, brasil).
+fezparte(robertocarlos, brasil).
+fezparte(tostao, brasil).
+fezparte(didi, brasil).
+fezparte(vava, brasil).
+fezparte(bellini, brasil).
+fezparte(bebeto, brasil).
+fezparte(rivaldo, brasil).
+fezparte(neymar, brasil).
 
 fornecedor(athleta, 1954, 1977).
 fornecedor(adidas, 1977, 1981).
@@ -91,8 +91,8 @@ fornecedor(nike, 1997, 2018).
 
 fornecedor(MARCA, ANO) :- fornecedor(MARCA, INI, FIM), ANO >= INI, ANO =< FIM.
 
-rival(selecao, argentina).
-rival(selecao, uruguai).
+rival(brasil, argentina).
+rival(brasil, uruguai).
 
 titulo(melhordomundo, romario, 1994).
 titulo(melhordomundo, ronaldo, 1996).
@@ -124,3 +124,13 @@ patrocina(unimed, 2013, 2019).
 patrocina(chevrolet, 2014, 2018).
 
 patrocina(MARCA, ANO) :- patrocina(MARCA, INI, FIM), ANO >= INI, ANO =< FIM.
+
+jogou(brasil, 1, 7, alemanha, copadomundo, 2014).
+jogou(brasil, 14, 0, nicaragua, jogospanamericanos, 1975).
+jogou(brasil, 0, 6, uruguai, campeonatosulamericano, 1920).
+jogou(brasil, 5, 2, suecia, copadomundo, 1958).
+jogou(brasil, 4, 1, italia, copadomundo, 1970).
+jogou(brasil, 0, 3, frança, copadomundo, 1998).
+
+ganhou(brasil, ADVERSARIO, CAMPEONATO, ANO) :- jogou(brasil, BR, ADV, ADVERSARIO, CAMPEONATO, ANO), BR > ADV.
+perdeu(brasil, ADVERSARIO, CAMPEONATO, ANO) :- jogou(brasil, BR, ADV, ADVERSARIO, CAMPEONATO, ANO), BR < ADV.
