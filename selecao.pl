@@ -29,11 +29,18 @@ participou(brasil, copadomundo, 2006).
 participou(brasil, copadomundo, 2010).
 participou(brasil, copadomundo, 2014).
 
+participou(alemanha, copadomundo, 2014).
+
+todascopas(PAIS) :- aggregate_all(count, participou(PAIS,copadomundo,_), Count),Count = 20.
+
 ganhou(brasil, copadomundo, 1958).
 ganhou(brasil, copadomundo, 1962).
 ganhou(brasil, copadomundo, 1970).
 ganhou(brasil, copadomundo, 1994).
 ganhou(brasil, copadomundo, 2002).
+
+ganhou(alemanha, copadomundo, 2014).
+
 
 ganhou(brasil, copadasamericas, 1919).
 ganhou(brasil, copadasamericas, 1922).
@@ -58,6 +65,8 @@ ganhou(brasil, campeonatopanamericano, 1956).
 ganhou(brasil, jogospanamericanos, 1963).
 ganhou(brasil, jogospanamericanos, 1979).
 ganhou(brasil, jogospanamericanos, 1987).
+
+pentacampeao(PAIS) :- aggregate_all(count, ganhou(PAIS,copadomundo,_), Count),Count = 5.
 
 sede(olimpiadas, 2016, riodejaneiro).
 sede(copadomundo, 1958, suecia).
@@ -111,6 +120,17 @@ uniforme(jogador, treino, azul).
 uniforme(goleiro, treino, preto).
 uniforme(comissaotecnica, treino, preto).
 
+tecnico(tite,2016,2018).
+tecnico(dunga,2014,2016).
+tecnico(felipao,2013,2014).
+tecnico(manomenezes,2010,2012).
+tecnico(dunga,2006,2010).
+tecnico(parreira,2003,2006).
+tecnico(felipao,2001,2002).
+tecnico(leao,2000,2001).
+
+tecnico(NOME, ANO) :- tecnico(NOME, INI, FIM), ANO >= INI, ANO =< FIM.
+
 patrocina(guaranaantarctica, 2001, 2019).
 patrocina(guaranaantarctica, 2005, 2014).
 patrocina(guaranaantarctica, 2008, 2022).
@@ -131,6 +151,9 @@ jogou(brasil, 0, 6, uruguai, campeonatosulamericano, 1920).
 jogou(brasil, 5, 2, suecia, copadomundo, 1958).
 jogou(brasil, 4, 1, italia, copadomundo, 1970).
 jogou(brasil, 0, 3, frança, copadomundo, 1998).
+jogou(brasil, 2, 0, alemanha, copadomundo, 2002).
 
-ganhou(brasil, ADVERSARIO, CAMPEONATO, ANO) :- jogou(brasil, BR, ADV, ADVERSARIO, CAMPEONATO, ANO), BR > ADV.
-perdeu(brasil, ADVERSARIO, CAMPEONATO, ANO) :- jogou(brasil, BR, ADV, ADVERSARIO, CAMPEONATO, ANO), BR < ADV.
+ganhoupartida(brasil, ADVERSARIO, CAMPEONATO, ANO) :- jogou(brasil, BR, ADV, ADVERSARIO, CAMPEONATO, ANO), BR > ADV.
+perdeupartida(brasil, ADVERSARIO, CAMPEONATO, ANO) :- jogou(brasil, BR, ADV, ADVERSARIO, CAMPEONATO, ANO), BR < ADV.
+
+
