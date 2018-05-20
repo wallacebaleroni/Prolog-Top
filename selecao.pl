@@ -16,7 +16,7 @@ selecao(suecia).
 selecao(italia).
 selecao(franca).
 
-competicao(COMPETICAO) :- participou(_, COMPETICAO, _).
+selecao(PAIS) :- ganhou(PAIS, _, _).
 
 /* participou(SELECAO, COMPETICAO, ANO) */
 participou(brasil, copadomundo, 1930).
@@ -42,6 +42,7 @@ participou(brasil, copadomundo, 2014).
 participou(alemanha, copadomundo, 2014).
 
 participou(SELECAO, COMPETICAO, ANO) :- ganhou(SELECAO, COMPETICAO, ANO).
+competicao(COMPETICAO) :- participou(_, COMPETICAO, _).
 
 /* ganhou(SELECAO, COMPETICAO, ANO) */
 ganhou(brasil, copadomundo, 1958).
@@ -142,7 +143,7 @@ posicao(JOGADOR, POSICAO) :- posicao(JOGADOR, _, POSICAO).
 numero(JOGADOR, NUMERO) :- posicao(JOGADOR, NUMERO, _).
 
 /* clube(JOGADOR, CLUBE) */
-cube(alisson, roma).
+clube(alisson, roma).
 clube(cassio, corinthians).
 clube(ederson, manchestercity).
 clube(danilo, manchestercity).
@@ -254,6 +255,11 @@ sede(copadomundo, 2002, coreiadosul).
 sede(copadomundo, 2002, japao).
 sede(olimpiadas, 2016, riodejaneiro).
 
+/* continente(CONTINENTE). */
+continente(america).
+continente(europa).
+continente(asia).
+
 /* ficaem(CIDADE, PAIS)
    ficaem(PAIS, SUBCONTINENTE).
    ficaem(SUBCONTINENTE, CONTINENTE). */
@@ -269,4 +275,5 @@ ficaem(japao, asia).
 ficaem(americadosul, america).
 ficaem(americadonorte, america).
 
-ficaem(X, Z) :- ficaem(X, Y), ficaem(Y, Z).
+ficaem(X, Z) :- pertence_a(X, Z).
+pertence_a(X, Z) :- ficaem(X, Y), ficaem(Y, Z).
