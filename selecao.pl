@@ -43,6 +43,7 @@ participou(alemanha, copadomundo, 2014).
 
 participou(SELECAO, COMPETICAO, ANO) :- ganhou(SELECAO, COMPETICAO, ANO).
 competicao(COMPETICAO) :- participou(_, COMPETICAO, _).
+todascopas(PAIS) :- aggregate_all(count, participou(PAIS, copadomundo, _), Count), Count = 20.
 
 /* ganhou(SELECAO, COMPETICAO, ANO) */
 ganhou(brasil, copadomundo, 1958).
@@ -90,9 +91,14 @@ ganhou(brasil, jogospanamericanos, 1963).
 ganhou(brasil, jogospanamericanos, 1979).
 ganhou(brasil, jogospanamericanos, 1987).
 
-todascopas(PAIS) :- aggregate_all(count, participou(PAIS, copadomundo, _), Count), Count = 20.
-pentacampeao(PAIS) :- aggregate_all(count, ganhou(PAIS, copadomundo, _), Count), Count = 5.
 
+pentacampeao(PAIS) :- aggregate_all(count, ganhou(PAIS, copadomundo, _), Count), Count = 5.
+tetracampeao(PAIS) :- aggregate_all(count, ganhou(PAIS, copadomundo, _), Count), Count = 4.
+tricampeao(PAIS) :- aggregate_all(count, ganhou(PAIS, copadomundo, _), Count), Count = 3.
+bicampeao(PAIS) :- aggregate_all(count, ganhou(PAIS, copadomundo, _), Count), Count = 2.
+campeaomundial(PAIS) :- ganhou(PAIS,copadomundo,_).
+campeaoolimpico(PAIS) :- ganhou(PAIS,olimpiadas,_).
+    
 /* fezparte(JOGADOR, SELECAO) */
 fezparte(rivellino, brasil).
 fezparte(zico, brasil).
@@ -201,6 +207,7 @@ uniforme(jogador, treino, azul, azul).
 uniforme(goleiro, treino, preto, preto).
 uniforme(comissaotecnica, treino, preto, preto).
 
+
 /* tecnico(TECNICO, ANO_INICIO, ANO_FIM) */
 tecnico(tite, 2016, 2018).
 tecnico(dunga, 2014, 2016).
@@ -256,7 +263,7 @@ sede(copadomundo, 2002, japao).
 sede(olimpiadas, 2016, riodejaneiro).
 
 /* continente(CONTINENTE). */
-continente(america).
+continente(america). 
 continente(europa).
 continente(asia).
 
@@ -275,5 +282,52 @@ ficaem(japao, asia).
 ficaem(americadosul, america).
 ficaem(americadonorte, america).
 
+ficaem(roma, italia).
+ficaem(saopaulo, brasil).
+ficaem(machester, inglaterra).
+ficaem(madri, espanha).
+ficaem(milao, italia).
+ficaem(portoalegre, brasil).
+ficaem(pequim, china).
+ficaem(barcelona, espanha).
+ficaem(donetsk, ucrania).
+ficaem(londres, inglaterra).
+ficaem(turim, italia).
+ficaem(liverpool, inglaterra).
+ficaem(paris, franca).
+
+ficaem(inglaterra, europa).
+ficaem(espanha, europa).
+ficaem(italia, europa).
+ficaem(franca, europa).
+ficaem(china, asia).
+ficaem(ucrania, europa).
+
+/*ficaem(CLUBE,CIDADE)*/
+ficaem(roma, roma).
+ficaem(corinthians, saopaulo).
+ficaem(manchestercity, manchester).
+ficaem(atleticodemadrid, madri).
+ficaem(internazionale, milao).
+ficaem(gremio, portoalegre).
+ficaem(parissaintgermain, paris).
+ficaem(realmadrid, madri).
+ficaem(beijingguoan, pequim).
+ficaem(barcelona, barcelona).
+ficaem(shakhtardonetsk, donetsk).
+ficaem(chelsea, londres).
+ficaem(juventus, turim).
+ficaem(liverpool, liverpool).
+
+/*ficaem(CAMPEONATO,CONTINENTE)*/
+ficaem(america,libertadores).
+ficaem(europa,championsleague).
+
+
+
 ficaem(X, Z) :- pertence_a(X, Z).
 pertence_a(X, Z) :- ficaem(X, Y), ficaem(Y, Z).
+
+jogana(JOGADOR,CAMPEONATO) :- clube(JOGADOR,X), ficaem(X,CAMPEONATO).
+
+
