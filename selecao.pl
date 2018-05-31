@@ -285,7 +285,7 @@ ficaem(americadonorte, america).
 ficaem(roma, italia).
 ficaem(saopaulo, brasil).
 ficaem(machester, inglaterra).
-ficaem(madri, espanha).
+ficaem(madrid, espanha).
 ficaem(milao, italia).
 ficaem(portoalegre, brasil).
 ficaem(pequim, china).
@@ -303,15 +303,16 @@ ficaem(franca, europa).
 ficaem(china, asia).
 ficaem(ucrania, europa).
 
-/*ficaem(CLUBE,CIDADE)*/
+/* ficaem(CLUBE, CIDADE) */
+
 ficaem(roma, roma).
 ficaem(corinthians, saopaulo).
 ficaem(manchestercity, manchester).
-ficaem(atleticodemadrid, madri).
+ficaem(atleticodemadrid, madrid).
 ficaem(internazionale, milao).
 ficaem(gremio, portoalegre).
 ficaem(parissaintgermain, paris).
-ficaem(realmadrid, madri).
+ficaem(realmadrid, madrid).
 ficaem(beijingguoan, pequim).
 ficaem(barcelona, barcelona).
 ficaem(shakhtardonetsk, donetsk).
@@ -319,15 +320,15 @@ ficaem(chelsea, londres).
 ficaem(juventus, turim).
 ficaem(liverpool, liverpool).
 
-/*ficaem(CAMPEONATO,CONTINENTE)*/
-ficaem(america,libertadores).
-ficaem(europa,championsleague).
+
+/* ficaem(CAMPEONATO,CONTINENTE) */
+ficaem(america, libertadores).
+ficaem(europa, championsleague).
+
+
+ficaem(X, Z) :- pertence_a(X, Y), ficaem(Y, Z).
+pertence_a(X, Y) :- ficaem(X, Y).
 
 
 
-ficaem(X, Z) :- pertence_a(X, Z).
-pertence_a(X, Z) :- ficaem(X, Y), ficaem(Y, Z).
-
-jogana(JOGADOR,CAMPEONATO) :- clube(JOGADOR,X), ficaem(X,CAMPEONATO).
-
-
+jogana(JOGADOR, CAMPEONATO) :- clube(JOGADOR, X), ficaem(X, CAMPEONATO).
