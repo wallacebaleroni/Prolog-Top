@@ -305,7 +305,7 @@ ficaem(ucrania, europa).
 
 /* ficaem(CLUBE, CIDADE) */
 
-ficaem(roma, roma).
+ficaem(romafc, roma).
 ficaem(corinthians, saopaulo).
 ficaem(manchestercity, manchester).
 ficaem(atleticodemadrid, madrid).
@@ -318,7 +318,7 @@ ficaem(barcelona, barcelona).
 ficaem(shakhtardonetsk, donetsk).
 ficaem(chelsea, londres).
 ficaem(juventus, turim).
-ficaem(liverpool, liverpool).
+ficaem(liverpoolfc, liverpool).
 
 
 /* ficaem(CAMPEONATO,CONTINENTE) */
