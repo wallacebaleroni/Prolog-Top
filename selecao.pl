@@ -326,7 +326,8 @@ ficaem(america, libertadores).
 ficaem(europa, championsleague).
 
 
-pertence(X, Z) :- (ficaem(X, Y), ficaem(Y, Z)) ; ficaem(X, Z).
+ficaem(X, Z) :- pertence_a(X, Z).
+pertence_a(X, Z) :- ficaem(X, Y), ficaem(Y, Z).
 
 
 jogana(JOGADOR, CAMPEONATO) :- clube(JOGADOR, X), pertence(X, CAMPEONATO).
