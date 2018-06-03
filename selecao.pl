@@ -116,10 +116,6 @@ jogou_no_time(bebeto, brasil).
 jogou_no_time(rivaldo, brasil).
 jogou_no_time(neymar, brasil).
 
-/* joga_no_time(JOGADOR, SELECAO) */
-/* elenco atual da seleção */
-joga_no_time(JOGADOR, brasil) :- posicao(JOGADOR, _, _).
-
 /* posicao(JOGADOR, NUMERO, POSICAO) */
 posicao(alisson, 1, goleiro).
 posicao(cassio, 16, goleiro).
@@ -147,6 +143,11 @@ posicao(robertofirmino, 21, atacante).
 
 posicao(JOGADOR, POSICAO) :- posicao(JOGADOR, _, POSICAO).
 numero_posicao(JOGADOR, NUMERO) :- posicao(JOGADOR, NUMERO, _).
+
+
+/* joga_no_time(JOGADOR, SELECAO) */
+/* elenco atual da seleção */
+joga_no_time(JOGADOR, brasil) :- posicao(JOGADOR, _, _).
 
 /* joga_no_time(JOGADOR, TIME) */
 joga_no_time(alisson, roma).
@@ -274,7 +275,7 @@ continente(asia).
 /* fica_em(LOCAL1, LOCAL2) */
 % para perguntas
 fica_em(X, Y) :- em_(X, Y).
-fica_em(X, Z) :- em_(X, Y), fica_em(Y, Z), !.
+fica_em(X, Z) :- em_(X, Y), fica_em(Y, Z).
 
 /* em_(LOCAL1, LOCAL2) */
 % para uso interno
@@ -315,11 +316,6 @@ em_(paris, franca).
 em_(donetsk, ucrania).
 em_(pequim, china).
 
-% se o time tem base em uma cidade, ele está em
-em_(X, Y) :- baseado_em(X, Y).
-% generalização
-em_(X, Y) :- acontece_em(X, Y).
-
 /* fica_em(TIME, LOCAL) */
 % pra diferenciar relação entre dois locais
 baseado_em(romafc, roma).
@@ -336,9 +332,11 @@ baseado_em(shakhtardonetsk, donetsk).
 baseado_em(chelsea, londres).
 baseado_em(juventus, turim).
 baseado_em(liverpoolfc, liverpool).
+baseado_em(TIME, LUGAR) :- fica_em(X, LUGAR), baseado_em(TIME, X).
 
 /* acontece_em(COMPETICAO, LOCAL) */
 acontece_em(libertadores, america).
 acontece_em(championsleague, europa).
 
-joga_na(JOGADOR, CAMPEONATO) :- joga_no_time(JOGADOR, X), fica_em(X, CAMPEONATO).
+joga_no_lugar(JOGADOR, LUGAR) :- joga_no_time(JOGADOR, Y), baseado_em(Y, LUGAR).
+joga_no_campeonato(JOGADOR, CAMPEONATO) :- joga_no_lugar(JOGADOR, X), acontece_em(CAMPEONATO, X).
