@@ -267,10 +267,13 @@ continente(america).
 continente(europa).
 continente(asia).
 
-/* ficaem(CIDADE, PAIS)
-   ficaem(PAIS, SUBCONTINENTE).
-   ficaem(SUBCONTINENTE, CONTINENTE). */
+/* fica_em(LOCAL1, LOCAL2) */
+/* para perguntas */
+fica_em(X, Z) :- ficaem(X, Z).
+fica_em(X, Z) :- ficaem(X, Y), fica_em(Y, Z).
 
+/* ficaem(LOCAL1, LOCAL2) */
+/* para uso interno */
 ficaem(riodejaneiro, brasil).
 ficaem(brasil, americadosul).
 ficaem(suecia, europa).
@@ -320,14 +323,8 @@ ficaem(chelsea, londres).
 ficaem(juventus, turim).
 ficaem(liverpoolfc, liverpool).
 
-
 /* ficaem(CAMPEONATO,CONTINENTE) */
-ficaem(america, libertadores).
-ficaem(europa, championsleague).
-
-
-ficaem(X, Z) :- pertence_a(X, Z).
-pertence_a(X, Z) :- ficaem(X, Y), ficaem(Y, Z).
-
+/*ficaem(america, libertadores).
+ficaem(europa, championsleague).*/
 
 jogana(JOGADOR, CAMPEONATO) :- clube(JOGADOR, X), pertence(X, CAMPEONATO).
