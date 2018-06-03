@@ -1,2 +1,2 @@
 # PrologTop
-https://swish.swi-prolog.org/p/GIFSXHrQ.pl
+https://swish.swi-prolog.org/p/Prolog-Top.pl
