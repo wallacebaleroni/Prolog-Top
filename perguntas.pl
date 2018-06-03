@@ -25,4 +25,4 @@ jogana(neymar,championsleague).
 
 
 /* O Brasil já ganhou alguma Copa do Mundo na Europa? */
-ganhou(brasil, copadomundo, ANO), sede(copadomundo, ANO, LOCAL), ficaem(LOCAL, europa).
+ganhou(brasil, copadomundo, ANO), sede(copadomundo, ANO, LOCAL), fica_em(LOCAL, europa).
