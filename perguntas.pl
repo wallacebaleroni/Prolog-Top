@@ -22,10 +22,7 @@ fornecedor(X,2018).
 /*O neymar partcipa da champions league? Oraculo: true*/
 jogana(neymar,championsleague).
 
-/*7*/
 
-/*8*/
 
-/*9*/
-
-/*10*/
+/* O Brasil já ganhou alguma Copa do Mundo na Europa? */
+ganhou(brasil, copadomundo, ANO), sede(copadomundo, ANO, LOCAL), ficaem(LOCAL, europa).
