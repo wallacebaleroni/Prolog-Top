@@ -99,26 +99,26 @@ bicampeao(PAIS) :- aggregate_all(count, ganhou(PAIS, copadomundo, _), Count), Co
 campeaomundial(PAIS) :- ganhou(PAIS,copadomundo,_).
 campeaoolimpico(PAIS) :- ganhou(PAIS,olimpiadas,_).
     
-/* fezparte(JOGADOR, SELECAO) */
-fezparte(rivellino, brasil).
-fezparte(zico, brasil).
-fezparte(ronaldo, brasil).
-fezparte(romario, brasil).
-fezparte(ronaldinhogaucho, brasil).
-fezparte(zagallo, brasil).
-fezparte(carlosalberto, brasil).
-fezparte(robertocarlos, brasil).
-fezparte(tostao, brasil).
-fezparte(didi, brasil).
-fezparte(vava, brasil).
-fezparte(bellini, brasil).
-fezparte(bebeto, brasil).
-fezparte(rivaldo, brasil).
-fezparte(neymar, brasil).
+/* jogou_no_time(JOGADOR, SELECAO) */
+jogou_no_time(rivellino, brasil).
+jogou_no_time(zico, brasil).
+jogou_no_time(ronaldo, brasil).
+jogou_no_time(romario, brasil).
+jogou_no_time(ronaldinhogaucho, brasil).
+jogou_no_time(zagallo, brasil).
+jogou_no_time(carlosalberto, brasil).
+jogou_no_time(robertocarlos, brasil).
+jogou_no_time(tostao, brasil).
+jogou_no_time(didi, brasil).
+jogou_no_time(vava, brasil).
+jogou_no_time(bellini, brasil).
+jogou_no_time(bebeto, brasil).
+jogou_no_time(rivaldo, brasil).
+jogou_no_time(neymar, brasil).
 
-/* fazparte(JOGADOR, SELECAO) */
+/* joga_no_time(JOGADOR, SELECAO) */
 /* elenco atual da seleção */
-fazparte(JOGADOR, brasil) :- posicao(JOGADOR, _, _).
+joga_no_time(JOGADOR, brasil) :- posicao(JOGADOR, _, _).
 
 /* posicao(JOGADOR, NUMERO, POSICAO) */
 posicao(alisson, 1, goleiro).
@@ -146,34 +146,35 @@ posicao(taison, 20, atacante).
 posicao(robertofirmino, 21, atacante).
 
 posicao(JOGADOR, POSICAO) :- posicao(JOGADOR, _, POSICAO).
-numero(JOGADOR, NUMERO) :- posicao(JOGADOR, NUMERO, _).
+numero_posicao(JOGADOR, NUMERO) :- posicao(JOGADOR, NUMERO, _).
 
-/* clube(JOGADOR, CLUBE) */
-clube(alisson, roma).
-clube(cassio, corinthians).
-clube(ederson, manchestercity).
-clube(danilo, manchestercity).
-clube(filipeluis, atleticodemadrid).
-clube(marcelo, realmadrid).
-clube(fagner, corinthians).
-clube(miranda, internazionale).
-clube(pedrogeromel, gremio).
-clube(marquinhos, parissaintgermain).
-clube(thiagosilva, parissaintgermain).
-clube(casemiro, realmadrid).
-clube(renatoaugusto, beijingguoan).
-clube(philippecoutinho, barcelona).
-clube(paulinho, barcelona).
-clube(fernandinho, manchestercity).
-clube(fred, shakhtardonetsk).
-clube(willian, chelsea).
-clube(douglascosta, juventus).
-clube(gabrieljesus, manchestercity).
-clube(neymar, parissaintgermain).
-clube(taison, shakhtardonetsk).
-clube(robertofirmino, liverpool).
+/* joga_no_time(JOGADOR, TIME) */
+joga_no_time(alisson, roma).
+joga_no_time(cassio, corinthians).
+joga_no_time(ederson, manchestercity).
+joga_no_time(danilo, manchestercity).
+joga_no_time(filipeluis, atleticodemadrid).
+joga_no_time(marcelo, realmadrid).
+joga_no_time(fagner, corinthians).
+joga_no_time(miranda, internazionale).
+joga_no_time(pedrogeromel, gremio).
+joga_no_time(marquinhos, parissaintgermain).
+joga_no_time(thiagosilva, parissaintgermain).
+joga_no_time(casemiro, realmadrid).
+joga_no_time(renatoaugusto, beijingguoan).
+joga_no_time(philippecoutinho, barcelona).
+joga_no_time(paulinho, barcelona).
+joga_no_time(fernandinho, manchestercity).
+joga_no_time(fred, shakhtardonetsk).
+joga_no_time(willian, chelsea).
+joga_no_time(douglascosta, juventus).
+joga_no_time(gabrieljesus, manchestercity).
+joga_no_time(neymar, parissaintgermain).
+joga_no_time(taison, shakhtardonetsk).
+joga_no_time(robertofirmino, liverpool).
 
 /* fornecedor(MARCA, ANO_INICIO, ANO_FIM) */
+% fornecedores de uniforme da seleção brasileira
 fornecedor(athleta, 1954, 1977).
 fornecedor(adidas, 1977, 1981).
 fornecedor(topper, 1981, 1990).
@@ -184,20 +185,21 @@ fornecedor(MARCA, ANO) :- fornecedor(MARCA, INI, FIM), ANO >= INI, ANO =< FIM.
 
 fornecedor(brasil, MARCA) :- fornecedor(MARCA, _, _).
 
-/* rival (SELECAO_1, SELECAO_2). */
-rival(brasil, argentina).
-rival(brasil, uruguai).
+/* rivalidade (SELECAO_1, SELECAO_2). */
+rivalidade(brasil, argentina).
+rivalidade(brasil, uruguai).
 
-/* titulo (TITULO, JOGADOR, ANO) */
-titulo(melhordomundo, romario, 1994).
-titulo(melhordomundo, ronaldo, 1996).
-titulo(melhordomundo, ronaldo, 1997).
-titulo(melhordomundo, ronaldo, 2002).
-titulo(melhordomundo, ronaldinhogaucho, 2004).
-titulo(melhordomundo, ronaldinhogaucho, 2005).
-titulo(melhordomundo, kaka, 2007).
+/* premio_jogador (TITULO, JOGADOR, ANO) */
+premio_jogador(melhordomundo, romario, 1994).
+premio_jogador(melhordomundo, ronaldo, 1996).
+premio_jogador(melhordomundo, ronaldo, 1997).
+premio_jogador(melhordomundo, ronaldo, 2002).
+premio_jogador(melhordomundo, ronaldinhogaucho, 2004).
+premio_jogador(melhordomundo, ronaldinhogaucho, 2005).
+premio_jogador(melhordomundo, kaka, 2007).
 
 /* uniforme(TIPO_MEMBRO, TIPO_UNIFORME, COR_1, COR_2) */
+% uniformes da seleção brasileira
 uniforme(jogador, principal, amarelo, azul).
 uniforme(jogador, alternativo, azul, branco).
 uniforme(goleiro, principal, verde, verde).
@@ -209,6 +211,7 @@ uniforme(comissaotecnica, treino, preto, preto).
 
 
 /* tecnico(TECNICO, ANO_INICIO, ANO_FIM) */
+% tecnicos da seleção brasileira
 tecnico(tite, 2016, 2018).
 tecnico(dunga, 2014, 2016).
 tecnico(felipao, 2013, 2014).
@@ -223,6 +226,7 @@ tecnico(NOME, ANO) :- tecnico(NOME, INI, FIM), ANO >= INI, ANO =< FIM.
 tecnico(brasil) :- tecnico(_, _, _).
 
 /* patrocina(MARCA, ANO_INICIO, ANO_FIM) */
+% patrocinadores da seleção brasileira
 patrocina(guaranaantarctica, 2001, 2019).
 patrocina(guaranaantarctica, 2005, 2014).
 patrocina(guaranaantarctica, 2008, 2022).
@@ -268,63 +272,73 @@ continente(europa).
 continente(asia).
 
 /* fica_em(LOCAL1, LOCAL2) */
-/* para perguntas */
-fica_em(X, Z) :- ficaem(X, Z).
-fica_em(X, Z) :- ficaem(X, Y), fica_em(Y, Z).
+% para perguntas
+fica_em(X, Y) :- em_(X, Y).
+fica_em(X, Z) :- em_(X, Y), fica_em(Y, Z), !.
 
-/* ficaem(LOCAL1, LOCAL2) */
-/* para uso interno */
-ficaem(riodejaneiro, brasil).
-ficaem(brasil, americadosul).
-ficaem(suecia, europa).
-ficaem(mexico, americadonorte).
-ficaem(chile, americadosul).
-ficaem(eua, americadonorte).
-ficaem(coreiadosul, asia).
-ficaem(japao, asia).
-ficaem(americadosul, america).
-ficaem(americadonorte, america).
+/* em_(LOCAL1, LOCAL2) */
+% para uso interno
+% afirma que um local está dentro do outro
 
-ficaem(roma, italia).
-ficaem(saopaulo, brasil).
-ficaem(machester, inglaterra).
-ficaem(madrid, espanha).
-ficaem(milao, italia).
-ficaem(portoalegre, brasil).
-ficaem(pequim, china).
-ficaem(barcelona, espanha).
-ficaem(donetsk, ucrania).
-ficaem(londres, inglaterra).
-ficaem(turim, italia).
-ficaem(liverpool, inglaterra).
-ficaem(paris, franca).
+% SUBCONTINENTE em CONTINENTE
+em_(americadosul, america).
+em_(americadonorte, america).
 
-ficaem(inglaterra, europa).
-ficaem(espanha, europa).
-ficaem(italia, europa).
-ficaem(franca, europa).
-ficaem(china, asia).
-ficaem(ucrania, europa).
+% PAIS em SUBCONTINENTE
+em_(brasil, americadosul).
+em_(chile, americadosul).
+em_(mexico, americadonorte).
+em_(eua, americadonorte).
+em_(suecia, europa).
+em_(inglaterra, europa).
+em_(espanha, europa).
+em_(italia, europa).
+em_(franca, europa).
+em_(ucrania, europa).
+em_(china, asia).
+em_(coreiadosul, asia).
+em_(japao, asia).
 
-/* ficaem(CLUBE, CIDADE) */
+% CIDADE em PAIS
+em_(riodejaneiro, brasil).
+em_(saopaulo, brasil).
+em_(portoalegre, brasil).
+em_(turim, italia).
+em_(roma, italia).
+em_(milao, italia).
+em_(machester, inglaterra).
+em_(londres, inglaterra).
+em_(liverpool, inglaterra).
+em_(madrid, espanha).
+em_(barcelona, espanha).
+em_(paris, franca).
+em_(donetsk, ucrania).
+em_(pequim, china).
 
-ficaem(romafc, roma).
-ficaem(corinthians, saopaulo).
-ficaem(manchestercity, manchester).
-ficaem(atleticodemadrid, madrid).
-ficaem(internazionale, milao).
-ficaem(gremio, portoalegre).
-ficaem(parissaintgermain, paris).
-ficaem(realmadrid, madrid).
-ficaem(beijingguoan, pequim).
-ficaem(barcelona, barcelona).
-ficaem(shakhtardonetsk, donetsk).
-ficaem(chelsea, londres).
-ficaem(juventus, turim).
-ficaem(liverpoolfc, liverpool).
+% se o time tem base em uma cidade, ele está em
+em_(X, Y) :- baseado_em(X, Y).
+% generalização
+em_(X, Y) :- acontece_em(X, Y).
 
-/* ficaem(CAMPEONATO,CONTINENTE) */
-/*ficaem(america, libertadores).
-ficaem(europa, championsleague).*/
+/* fica_em(TIME, LOCAL) */
+% pra diferenciar relação entre dois locais
+baseado_em(romafc, roma).
+baseado_em(corinthians, saopaulo).
+baseado_em(manchestercity, manchester).
+baseado_em(atleticodemadrid, madrid).
+baseado_em(internazionale, milao).
+baseado_em(gremio, portoalegre).
+baseado_em(parissaintgermain, paris).
+baseado_em(realmadrid, madrid).
+baseado_em(beijingguoan, pequim).
+baseado_em(barcelona, barcelona).
+baseado_em(shakhtardonetsk, donetsk).
+baseado_em(chelsea, londres).
+baseado_em(juventus, turim).
+baseado_em(liverpoolfc, liverpool).
 
-jogana(JOGADOR, CAMPEONATO) :- clube(JOGADOR, X), pertence(X, CAMPEONATO).
+/* acontece_em(COMPETICAO, LOCAL) */
+acontece_em(libertadores, america).
+acontece_em(championsleague, europa).
+
+joga_na(JOGADOR, CAMPEONATO) :- joga_no_time(JOGADOR, X), fica_em(X, CAMPEONATO).
