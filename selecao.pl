@@ -16,7 +16,30 @@ selecao(suecia).
 selecao(italia).
 selecao(franca).
 
-selecao(PAIS) :- ganhou(PAIS, _, _).
+selecao(PAIS) :-
+    ganhou(PAIS, _, _).
+
+/* copa(PAIS_SEDE, ANO). */
+copa(uruguai, 1930).
+copa(italia, 1934).
+copa(franca, 1938).
+copa(brasil, 1950).
+copa(suica, 1954).
+copa(suecia, 1958).
+copa(chile, 1962).
+copa(inglaterra, 1966).
+copa(mexico, 1970).
+copa(alemanha_ocidental, 1974).
+copa(argentina, 1978).
+copa(espanha, 1982).
+copa(mexico, 1986).
+copa(italia, 1990).
+copa(estados_unidos, 1994).
+copa(franca_, 1998).
+copa(japao_e_coreia_do_sul, 2002).
+copa(alemanha, 2006).
+copa(africa_do_sul, 2010).
+copa(brasil, 2014).
 
 /* participou(SELECAO, COMPETICAO, ANO) */
 participou(brasil, copadomundo, 1930).
@@ -45,34 +68,35 @@ participou(SELECAO, COMPETICAO, ANO) :-
     not(participou(SELECAO, COMPETICAO, ANO)).
 % só cria a instância de participou se ela não existir ainda, para evitar a contagem de duplicatas
 
-competicao(COMPETICAO) :- participou(_, COMPETICAO, _).
+competicao(COMPETICAO) :-
+    participou(_, COMPETICAO, _).
 
 todas_copas(PAIS) :-
-    aggregate_all(count, participou(PAIS, copadomundo, _), COUNT),
-    COUNT = 20.
+    aggregate_all(count, participou(PAIS, copadomundo, _), COUNT_PART),
+    aggregate_all(count, copa(_, _), COUNT_TODS),
+    COUNT_PART = COUNT_TODS.
 
 /* ganhou(SELECAO, COMPETICAO, ANO) */
-ganhou(brasil, copadomundo, 1958).
-ganhou(brasil, copadomundo, 1962).
-ganhou(brasil, copadomundo, 1970).
-ganhou(brasil, copadomundo, 1994).
-ganhou(brasil, copadomundo, 2002).
-
-ganhou(alemanha, copadomundo, 1954).
-ganhou(alemanha, copadomundo, 1974).
-ganhou(alemanha, copadomundo, 1990).
-ganhou(alemanha, copadomundo, 2014).
+ganhou(uruguai, copadomundo, 1930).
 ganhou(italia, copadomundo, 1934).
 ganhou(italia, copadomundo, 1938).
-ganhou(italia, copadomundo, 1982).
-ganhou(italia, copadomundo, 2006).
-ganhou(argentina, copadomundo, 1978).
-ganhou(argentina, copadomundo, 1986).
-ganhou(uruguai, copadomundo, 1930).
 ganhou(uruguai, copadomundo, 1950).
+ganhou(alemanha, copadomundo, 1954).
+ganhou(brasil, copadomundo, 1958).
+ganhou(brasil, copadomundo, 1962).
+ganhou(inglaterra, copadomundo, 1966).
+ganhou(brasil, copadomundo, 1970).
+ganhou(alemanha, copadomundo, 1974).
+ganhou(argentina, copadomundo, 1978).
+ganhou(italia, copadomundo, 1982).
+ganhou(argentina, copadomundo, 1986).
+ganhou(alemanha, copadomundo, 1990).
+ganhou(brasil, copadomundo, 1994).
 ganhou(franca, copadomundo, 1998).
-ganhou(inglaterra, copadomundo, 1996).
+ganhou(brasil, copadomundo, 2002).
+ganhou(italia, copadomundo, 2006).
 ganhou(espanha, copadomundo, 2010).
+ganhou(alemanha, copadomundo, 2014).
 
 ganhou(brasil, copadasamericas, 1919).
 ganhou(brasil, copadasamericas, 1922).
@@ -113,8 +137,10 @@ bicampeao(PAIS) :-
     aggregate_all(count, ganhou(PAIS, copadomundo, _), COUNT),
     COUNT = 2.
 
-campeaomundial(PAIS) :- ganhou(PAIS, copadomundo, _).
-campeaoolimpico(PAIS) :- ganhou(PAIS, olimpiadas, _).
+campeaomundial(PAIS) :-
+    ganhou(PAIS, copadomundo, _).
+campeaoolimpico(PAIS) :-
+    ganhou(PAIS, olimpiadas, _).
     
 /* jogou_no_time(JOGADOR, SELECAO) */
 jogou_no_time(rivellino, brasil).
@@ -319,7 +345,8 @@ continente(asia).
 
 /* fica_em(LOCAL1, LOCAL2) */
 % para perguntas
-fica_em(X, Y) :- em_(X, Y).
+fica_em(X, Y) :-
+    em_(X, Y).
 
 fica_em(X, Z) :-
     em_(X, Y),
@@ -417,4 +444,3 @@ tecnico_2_periodos(brasil) :-
     INICIO1 < INICIO2,
     FIM1 < FIM2,
     !.
-
