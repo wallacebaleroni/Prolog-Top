@@ -39,11 +39,17 @@ participou(brasil, copadomundo, 2002).
 participou(brasil, copadomundo, 2006).
 participou(brasil, copadomundo, 2010).
 participou(brasil, copadomundo, 2014).
-participou(alemanha, copadomundo, 2014).
 
-participou(SELECAO, COMPETICAO, ANO) :- ganhou(SELECAO, COMPETICAO, ANO).
+participou(SELECAO, COMPETICAO, ANO) :-
+    ganhou(SELECAO, COMPETICAO, ANO),
+    not(participou(SELECAO, COMPETICAO, ANO)).
+% só cria a instância de participou se ela não existir ainda, para evitar a contagem de duplicatas
+
 competicao(COMPETICAO) :- participou(_, COMPETICAO, _).
-todascopas(PAIS) :- aggregate_all(count, participou(PAIS, copadomundo, _), Count), Count = 20.
+
+todas_copas(PAIS) :-
+    aggregate_all(count, participou(PAIS, copadomundo, _), COUNT),
+    COUNT = 20.
 
 /* ganhou(SELECAO, COMPETICAO, ANO) */
 ganhou(brasil, copadomundo, 1958).
@@ -91,13 +97,24 @@ ganhou(brasil, jogospanamericanos, 1963).
 ganhou(brasil, jogospanamericanos, 1979).
 ganhou(brasil, jogospanamericanos, 1987).
 
+pentacampeao(PAIS) :-
+    aggregate_all(count, ganhou(PAIS, copadomundo, _), COUNT),
+    COUNT = 5.
 
-pentacampeao(PAIS) :- aggregate_all(count, ganhou(PAIS, copadomundo, _), Count), Count = 5.
-tetracampeao(PAIS) :- aggregate_all(count, ganhou(PAIS, copadomundo, _), Count), Count = 4.
-tricampeao(PAIS) :- aggregate_all(count, ganhou(PAIS, copadomundo, _), Count), Count = 3.
-bicampeao(PAIS) :- aggregate_all(count, ganhou(PAIS, copadomundo, _), Count), Count = 2.
-campeaomundial(PAIS) :- ganhou(PAIS,copadomundo,_).
-campeaoolimpico(PAIS) :- ganhou(PAIS,olimpiadas,_).
+tetracampeao(PAIS) :-
+    aggregate_all(count, ganhou(PAIS, copadomundo, _), COUNT),
+    COUNT = 4.
+
+tricampeao(PAIS) :-
+    aggregate_all(count, ganhou(PAIS, copadomundo, _), COUNT),
+    COUNT = 3.
+
+bicampeao(PAIS) :-
+    aggregate_all(count, ganhou(PAIS, copadomundo, _), COUNT),
+    COUNT = 2.
+
+campeaomundial(PAIS) :- ganhou(PAIS, copadomundo, _).
+campeaoolimpico(PAIS) :- ganhou(PAIS, olimpiadas, _).
     
 /* jogou_no_time(JOGADOR, SELECAO) */
 jogou_no_time(rivellino, brasil).
@@ -141,15 +158,28 @@ posicao(neymar, 10, atacante).
 posicao(taison, 20, atacante).
 posicao(robertofirmino, 21, atacante).
 
-posicao(JOGADOR, POSICAO) :- posicao(JOGADOR, _, POSICAO).
-numero_posicao(JOGADOR, NUMERO) :- posicao(JOGADOR, NUMERO, _).
+posicao(JOGADOR, POSICAO) :-
+    posicao(JOGADOR, _, POSICAO).
 
+numero_posicao(JOGADOR, NUMERO) :-
+    posicao(JOGADOR, NUMERO, _).
+
+/* tipo_posicao(POSICAO, TIPO) */
+% jogador ou goleiro, para identificar os uniformes
+tipo_posicao(goleiro, goleiro).
+tipo_posicao(zagueiro, jogador).
+tipo_posicao(atacante, jogador).
+tipo_posicao(volante, jogador).
+tipo_posicao(meia, jogador).
+tipo_posicao(lateral, jogador).
 
 /* joga_no_time(JOGADOR, SELECAO) */
-/* elenco atual da seleção */
-joga_no_time(JOGADOR, brasil) :- posicao(JOGADOR, _, _).
+% elenco atual da seleção
+joga_no_time(JOGADOR, brasil) :-
+    posicao(JOGADOR, _, _).
 
 /* joga_no_time(JOGADOR, TIME) */
+% clubes dos jogadores da seleção brasileira
 joga_no_time(alisson, roma).
 joga_no_time(cassio, corinthians).
 joga_no_time(ederson, manchestercity).
@@ -182,11 +212,15 @@ fornecedor(topper, 1981, 1990).
 fornecedor(umbro, 1991, 1996).
 fornecedor(nike, 1997, 2018).
 
-fornecedor(MARCA, ANO) :- fornecedor(MARCA, INI, FIM), ANO >= INI, ANO =< FIM.
+fornecedor(MARCA, ANO) :-
+    fornecedor(MARCA, INI, FIM),
+    ANO >= INI,
+    ANO =< FIM.
 
-fornecedor(brasil, MARCA) :- fornecedor(MARCA, _, _).
+fornecedor(brasil, MARCA) :-
+    fornecedor(MARCA, _, _).
 
-/* rivalidade (SELECAO_1, SELECAO_2). */
+/* rivalidade (SELECAO_1, SELECAO_2) */
 rivalidade(brasil, argentina).
 rivalidade(brasil, uruguai).
 
@@ -200,7 +234,7 @@ premio_jogador(melhordomundo, ronaldinhogaucho, 2005).
 premio_jogador(melhordomundo, kaka, 2007).
 
 /* uniforme(TIPO_MEMBRO, TIPO_UNIFORME, COR_1, COR_2) */
-% uniformes da seleção brasileira
+% uniformes atuais da seleção brasileira
 uniforme(jogador, principal, amarelo, azul).
 uniforme(jogador, alternativo, azul, branco).
 uniforme(goleiro, principal, verde, verde).
@@ -210,9 +244,8 @@ uniforme(jogador, treino, azul, azul).
 uniforme(goleiro, treino, preto, preto).
 uniforme(comissaotecnica, treino, preto, preto).
 
-
 /* tecnico(TECNICO, ANO_INICIO, ANO_FIM) */
-% tecnicos da seleção brasileira
+% técnicos da seleção brasileira
 tecnico(tite, 2016, 2018).
 tecnico(dunga, 2014, 2016).
 tecnico(felipao, 2013, 2014).
@@ -222,9 +255,10 @@ tecnico(parreira, 2003, 2006).
 tecnico(felipao, 2001, 2002).
 tecnico(leao, 2000, 2001).
 
-tecnico(NOME, ANO) :- tecnico(NOME, INI, FIM), ANO >= INI, ANO =< FIM.
-
-tecnico(brasil) :- tecnico(_, _, _).
+tecnico(NOME, ANO) :-
+    tecnico(NOME, INI, FIM),
+    ANO >= INI,
+    ANO =< FIM.
 
 /* patrocina(MARCA, ANO_INICIO, ANO_FIM) */
 % patrocinadores da seleção brasileira
@@ -240,9 +274,13 @@ patrocina(gol, 2013, 2017).
 patrocina(unimed, 2013, 2019).
 patrocina(chevrolet, 2014, 2018).
 
-patrocina(MARCA, ANO) :- patrocina(MARCA, INI, FIM), ANO >= INI, ANO =< FIM.
+patrocina(MARCA, ANO) :-
+    patrocina(MARCA, INI, FIM),
+    ANO >= INI,
+    ANO =< FIM.
 
-patrocina(brasil, MARCA) :- patrocina(MARCA, _, _).
+patrocina(brasil, MARCA) :-
+    patrocina(MARCA, _, _).
 
 /* jogou(SELECAO_1, PLACAR_SELECAO_1, PLACAR_SELECAO_2,SELECAO_2, COMPETICAO, ANO) */
 jogou(brasil, 1, 7, alemanha, copadomundo, 2014).
@@ -254,9 +292,16 @@ jogou(brasil, 0, 3, franca, copadomundo, 1998).
 jogou(brasil, 2, 0, alemanha, copadomundo, 2002).
 jogou(brasil, 0, 0, italia, copadomundo, 1994).
 
-jogou(SELECAO1, P1, P2, SELECAO2, COMPETICAO, ANO) :- jogou(SELECAO2, P2, P1, SELECAO1, COMPETICAO, ANO).
-ganhoupartida(brasil, ADVERSARIO, CAMPEONATO, ANO) :- jogou(brasil, BR, ADV, ADVERSARIO, CAMPEONATO, ANO), BR > ADV.
-perdeupartida(brasil, ADVERSARIO, CAMPEONATO, ANO) :- jogou(brasil, BR, ADV, ADVERSARIO, CAMPEONATO, ANO), BR < ADV.
+jogou(SELECAO1, P1, P2, SELECAO2, COMPETICAO, ANO) :-
+    jogou(SELECAO2, P2, P1, SELECAO1, COMPETICAO, ANO).
+
+ganhou_partida(brasil, ADVERSARIO, CAMPEONATO, ANO) :-
+    jogou(brasil, BR, ADV, ADVERSARIO, CAMPEONATO, ANO),
+    BR > ADV.
+
+perdeu_partida(brasil, ADVERSARIO, CAMPEONATO, ANO) :-
+    jogou(brasil, BR, ADV, ADVERSARIO, CAMPEONATO, ANO),
+    BR < ADV.
 
 /* sede(COMPETICAO, ANO, LOCAL) */
 sede(copadomundo, 1958, suecia).
@@ -275,7 +320,10 @@ continente(asia).
 /* fica_em(LOCAL1, LOCAL2) */
 % para perguntas
 fica_em(X, Y) :- em_(X, Y).
-fica_em(X, Z) :- em_(X, Y), fica_em(Y, Z).
+
+fica_em(X, Z) :-
+    em_(X, Y),
+    fica_em(Y, Z).
 
 /* em_(LOCAL1, LOCAL2) */
 % para uso interno
@@ -332,11 +380,41 @@ baseado_em(shakhtardonetsk, donetsk).
 baseado_em(chelsea, londres).
 baseado_em(juventus, turim).
 baseado_em(liverpoolfc, liverpool).
-baseado_em(TIME, LUGAR) :- fica_em(X, LUGAR), baseado_em(TIME, X).
+
+baseado_em(TIME, LUGAR) :-
+    fica_em(X, LUGAR),
+    baseado_em(TIME, X).
 
 /* acontece_em(COMPETICAO, LOCAL) */
 acontece_em(libertadores, america).
 acontece_em(championsleague, europa).
 
-joga_no_lugar(JOGADOR, LUGAR) :- joga_no_time(JOGADOR, Y), baseado_em(Y, LUGAR).
-joga_no_campeonato(JOGADOR, CAMPEONATO) :- joga_no_lugar(JOGADOR, X), acontece_em(CAMPEONATO, X).
+joga_no_lugar(JOGADOR, LUGAR) :-
+    joga_no_time(JOGADOR, Y),
+    baseado_em(Y, LUGAR).
+
+joga_no_campeonato(JOGADOR, CAMPEONATO) :-
+    joga_no_lugar(JOGADOR, X),
+    acontece_em(CAMPEONATO, X).
+
+
+/* REGRAS PARA PERGUNTAS */
+ano_atual(ANO) :-
+	get_time(Stamp),
+	stamp_date_time(Stamp, DateTime, local),
+	date_time_value(year, DateTime, ANO).
+
+ganhou_copa_em_continente(PAIS, CONTINENTE) :-
+	ganhou(PAIS, copadomundo, ANO),
+	sede(copadomundo, ANO, LOCAL),
+	fica_em(LOCAL, CONTINENTE),
+	continente(CONTINENTE),
+	!.
+
+tecnico_2_periodos(brasil) :-
+    tecnico(NOME, INICIO1, FIM1),
+    tecnico(NOME, INICIO2, FIM2),
+    INICIO1 < INICIO2,
+    FIM1 < FIM2,
+    !.
+
