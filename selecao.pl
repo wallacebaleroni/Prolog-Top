@@ -409,20 +409,20 @@ baseado_em(juventus, turim).
 baseado_em(liverpoolfc, liverpool).
 
 baseado_em(TIME, LUGAR) :-
-    fica_em(X, LUGAR),
-    baseado_em(TIME, X).
+    fica_em(CIDADE, LUGAR),
+    baseado_em(TIME, CIDADE).
 
 /* acontece_em(COMPETICAO, LOCAL) */
 acontece_em(libertadores, america).
 acontece_em(championsleague, europa).
 
 joga_no_lugar(JOGADOR, LUGAR) :-
-    joga_no_time(JOGADOR, Y),
-    baseado_em(Y, LUGAR).
+    joga_no_time(JOGADOR, TIME),
+    baseado_em(TIME, LUGAR).
 
 joga_no_campeonato(JOGADOR, CAMPEONATO) :-
-    joga_no_lugar(JOGADOR, X),
-    acontece_em(CAMPEONATO, X).
+    joga_no_lugar(JOGADOR, LUGAR),
+    acontece_em(CAMPEONATO, LUGAR).
 
 
 /* REGRAS PARA PERGUNTAS */
