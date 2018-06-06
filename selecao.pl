@@ -19,7 +19,7 @@ selecao(franca).
 selecao(PAIS) :-
     ganhou(PAIS, _, _).
 
-/* copa(PAIS_SEDE, ANO). */
+/* copa(SEDE, ANO). */
 copa(uruguai, 1930).
 copa(italia, 1934).
 copa(franca, 1938).
@@ -72,9 +72,9 @@ competicao(COMPETICAO) :-
     participou(_, COMPETICAO, _).
 
 todas_copas(PAIS) :-
-    aggregate_all(count, participou(PAIS, copadomundo, _), COUNT_PART),
-    aggregate_all(count, copa(_, _), COUNT_TODS),
-    COUNT_PART = COUNT_TODS.
+    aggregate_all(count, participou(PAIS, copadomundo, _), COUNT_PARTICIPOU),
+    aggregate_all(count, copa(_, _), COUNT_TODAS),
+    COUNT_PARTICIPOU = COUNT_TODAS.
 
 /* ganhou(SELECAO, COMPETICAO, ANO) */
 ganhou(uruguai, copadomundo, 1930).
@@ -433,7 +433,7 @@ ano_atual(ANO) :-
 
 ganhou_copa_em_continente(PAIS, CONTINENTE) :-
 	ganhou(PAIS, copadomundo, ANO),
-	sede(copadomundo, ANO, LOCAL),
+	copa(LOCAL, ANO),
 	fica_em(LOCAL, CONTINENTE),
 	continente(CONTINENTE),
 	!.
