@@ -19,27 +19,28 @@ selecao(franca).
 selecao(PAIS) :-
     ganhou(PAIS, _, _).
 
-/* copa(SEDE, ANO). */
-copa(uruguai, 1930).
-copa(italia, 1934).
-copa(franca, 1938).
-copa(brasil, 1950).
-copa(suica, 1954).
-copa(suecia, 1958).
-copa(chile, 1962).
-copa(inglaterra, 1966).
-copa(mexico, 1970).
-copa(alemanha_ocidental, 1974).
-copa(argentina, 1978).
-copa(espanha, 1982).
-copa(mexico, 1986).
-copa(italia, 1990).
-copa(estados_unidos, 1994).
-copa(franca_, 1998).
-copa(japao_e_coreia_do_sul, 2002).
-copa(alemanha, 2006).
-copa(africa_do_sul, 2010).
-copa(brasil, 2014).
+/* sede(COMPETICAO, ANO, LOCAL) */
+sede(olimpiadas, 2016, riodejaneiro).
+sede(copadomundo, 1930, uruguai).
+sede(copadomundo, 1934, italia).
+sede(copadomundo, 1938, franca).
+sede(copadomundo, 1950, brasil).
+sede(copadomundo, 1954, suica).
+sede(copadomundo, 1958, suecia).
+sede(copadomundo, 1962, chile).
+sede(copadomundo, 1966, inglaterra).
+sede(copadomundo, 1970, mexico).
+sede(copadomundo, 1974, alemanhaocidental).
+sede(copadomundo, 1978, argentina).
+sede(copadomundo, 1982, espanha).
+sede(copadomundo, 1986, mexico).
+sede(copadomundo, 1990, italia).
+sede(copadomundo, 1994, estadosunidos).
+sede(copadomundo, 1998, franca).
+sede(copadomundo, 2002, japao_e_coreia_do_sul).
+sede(copadomundo, 2006, alemanha).
+sede(copadomundo, 2010, africa_do_sul).
+sede(copadomundo, 2014, brasil).
 
 /* participou(SELECAO, COMPETICAO, ANO) */
 participou(brasil, copadomundo, 1930).
@@ -73,7 +74,7 @@ competicao(COMPETICAO) :-
 
 todas_copas(PAIS) :-
     aggregate_all(count, participou(PAIS, copadomundo, _), COUNT_PARTICIPOU),
-    aggregate_all(count, copa(_, _), COUNT_TODAS),
+    aggregate_all(count, sede(copadomundo, _, _), COUNT_TODAS),
     COUNT_PARTICIPOU = COUNT_TODAS.
 
 /* ganhou(SELECAO, COMPETICAO, ANO) */
@@ -157,7 +158,6 @@ jogou_no_time(vava, brasil).
 jogou_no_time(bellini, brasil).
 jogou_no_time(bebeto, brasil).
 jogou_no_time(rivaldo, brasil).
-jogou_no_time(neymar, brasil).
 
 /* posicao(JOGADOR, NUMERO, POSICAO) */
 posicao(alisson, 1, goleiro).
@@ -205,8 +205,8 @@ joga_no_time(JOGADOR, brasil) :-
     posicao(JOGADOR, _, _).
 
 /* joga_no_time(JOGADOR, TIME) */
-% clubes dos jogadores da seleção brasileira
-joga_no_time(alisson, roma).
+% times dos jogadores da seleção
+joga_no_time(alisson, romafc).
 joga_no_time(cassio, corinthians).
 joga_no_time(ederson, manchestercity).
 joga_no_time(danilo, manchestercity).
@@ -228,7 +228,7 @@ joga_no_time(douglascosta, juventus).
 joga_no_time(gabrieljesus, manchestercity).
 joga_no_time(neymar, parissaintgermain).
 joga_no_time(taison, shakhtardonetsk).
-joga_no_time(robertofirmino, liverpool).
+joga_no_time(robertofirmino, liverpoolfc).
 
 /* fornecedor(MARCA, ANO_INICIO, ANO_FIM) */
 % fornecedores de uniforme da seleção brasileira
@@ -286,29 +286,29 @@ tecnico(NOME, ANO) :-
     ANO >= INI,
     ANO =< FIM.
 
-/* patrocina(MARCA, ANO_INICIO, ANO_FIM) */
+/* patrocinador(MARCA, ANO_INICIO, ANO_FIM) */
 % patrocinadores da seleção brasileira
-patrocina(guaranaantarctica, 2001, 2019).
-patrocina(guaranaantarctica, 2005, 2014).
-patrocina(guaranaantarctica, 2008, 2022).
-patrocina(extra, 2009, 2018).
-patrocina(nestle, 2010, 2018).
-patrocina(mastercard, 2012, 2020).
-patrocina(samsung, 2013, 2016).
-patrocina(gillette, 2016, 2018).
-patrocina(gol, 2013, 2017).
-patrocina(unimed, 2013, 2019).
-patrocina(chevrolet, 2014, 2018).
+patrocinador(guaranaantarctica, 2001, 2019).
+patrocinador(vivo, 2005, 2014).
+patrocinador(itau, 2008, 2022).
+patrocinador(extra, 2009, 2018).
+patrocinador(nestle, 2010, 2018).
+patrocinador(mastercard, 2012, 2020).
+patrocinador(samsung, 2013, 2016).
+patrocinador(gillette, 2016, 2018).
+patrocinador(gol, 2013, 2017).
+patrocinador(unimed, 2013, 2019).
+patrocinador(chevrolet, 2014, 2018).
 
-patrocina(MARCA, ANO) :-
-    patrocina(MARCA, INI, FIM),
+patrocinador(MARCA, ANO) :-
+    patrocinador(MARCA, INI, FIM),
     ANO >= INI,
     ANO =< FIM.
 
-patrocina(brasil, MARCA) :-
-    patrocina(MARCA, _, _).
+patrocinador(brasil, MARCA) :-
+    patrocinador(MARCA, _, _).
 
-/* jogou(SELECAO_1, PLACAR_SELECAO_1, PLACAR_SELECAO_2,SELECAO_2, COMPETICAO, ANO) */
+/* jogou(SELECAO_1, PLACAR_SELECAO_1, PLACAR_SELECAO_2, SELECAO_2, COMPETICAO, ANO) */
 jogou(brasil, 1, 7, alemanha, copadomundo, 2014).
 jogou(brasil, 14, 0, nicaragua, jogospanamericanos, 1975).
 jogou(brasil, 0, 6, uruguai, campeonatosulamericano, 1920).
@@ -328,15 +328,6 @@ ganhou_partida(brasil, ADVERSARIO, CAMPEONATO, ANO) :-
 perdeu_partida(brasil, ADVERSARIO, CAMPEONATO, ANO) :-
     jogou(brasil, BR, ADV, ADVERSARIO, CAMPEONATO, ANO),
     BR < ADV.
-
-/* sede(COMPETICAO, ANO, LOCAL) */
-sede(copadomundo, 1958, suecia).
-sede(copadomundo, 1962, chile).
-sede(copadomundo, 1970, mexico).
-sede(copadomundo, 1994, eua).
-sede(copadomundo, 2002, coreiadosul).
-sede(copadomundo, 2002, japao).
-sede(olimpiadas, 2016, riodejaneiro).
 
 /* continente(CONTINENTE). */
 continente(america). 
